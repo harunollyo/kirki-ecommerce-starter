@@ -125,6 +125,10 @@ a {
       gap:12px;
       >div{
         display: flex;
+        a{
+          text-decoration: none;
+          color: $text-color ;
+        }
       }
     }
   }

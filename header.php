@@ -9,6 +9,8 @@
  * @since 1.0.0
  */
 
+use Kirki\Ecommerce\App\Supports\Url;
+
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -48,12 +50,16 @@
                 <?php if (shortcode_exists('kecom_mini_cart')) : ?>
                     <span class="kecom-starter-nav-cart-divider">|</span>
                     <div class="kecom-starter-nav-extra">
-                        <div>
                         <?php
-                        if (class_exists('\Kirki\Ecommerce\App\Supports\Icon')) {
-                            \Kirki\Ecommerce\App\Supports\Icon::render('user', ['size' => 20]);
-                        }
-                        ?></div>
+                        if (class_exists('\Kirki\Ecommerce\App\Supports\Icon')) :
+                            $account_url = Url::get_account_url();
+                            ?>
+                        <div>
+                            <a href="<?php echo esc_url($account_url); ?>">
+                                <?php \Kirki\Ecommerce\App\Supports\Icon::render('user', ['size' => 20]); ?>
+                            </a>
+                        </div>
+                        <?php endif; ?>
                         <div><?php echo do_shortcode('[kecom_mini_cart]'); ?></div>
                     </div>
                     
