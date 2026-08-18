@@ -118,6 +118,15 @@ a {
       user-select: none;
       font-size: 1.1rem;
     }
+
+    .kecom-starter-nav-extra{
+      display:flex;
+      align-items: center;
+      gap:12px;
+      >div{
+        display: flex;
+      }
+    }
   }
 }
 

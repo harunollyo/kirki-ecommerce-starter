@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The header for our theme
  *
@@ -46,7 +47,16 @@
 
                 <?php if (shortcode_exists('kecom_mini_cart')) : ?>
                     <span class="kecom-starter-nav-cart-divider">|</span>
-                    <div style="display: flex;"><?php echo do_shortcode('[kecom_mini_cart]'); ?></div>
+                    <div class="kecom-starter-nav-extra">
+                        <div>
+                        <?php
+                        if (class_exists('\Kirki\Ecommerce\App\Supports\Icon')) {
+                            \Kirki\Ecommerce\App\Supports\Icon::render('user', ['size' => 20]);
+                        }
+                        ?></div>
+                        <div><?php echo do_shortcode('[kecom_mini_cart]'); ?></div>
+                    </div>
+                    
                 <?php endif; ?>
                 
             </div>
