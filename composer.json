@@ -1,0 +1,15 @@
+{
+    "name": "themeum/kirki-ecommerce-starter",
+    "autoload": {
+        "psr-4": {
+            "Kirki\\Ecommerce\\Theme\\Starter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Themeum",
+            "email": "support@themeum.com"
+        }
+    ],
+    "require": {}
+}
