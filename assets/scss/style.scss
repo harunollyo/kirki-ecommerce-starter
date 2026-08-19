@@ -137,8 +137,7 @@ a {
 // Main Content Layout
 .kecom-starter-site-main {
   padding: 40px 0;
-  min-height: calc(100vh - 200px);
-  
+
   &:has(.kecom-page-wrapper) {
     padding: 0;
   }
