@@ -9,8 +9,11 @@
  * @since 1.0.0
  */
 
-use Kirki\Ecommerce\App\Supports\Url;
+defined('ABSPATH') || exit;
 
+$theme_data = apply_filters('kirki_ecommerce_starter_data', []);
+$brand_name = $theme_data['brand_name'] ?? get_bloginfo('name');
+$brand_logo = $theme_data['brand_logo']  ?? null;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -28,7 +31,10 @@ use Kirki\Ecommerce\App\Supports\Url;
             <div class="kecom-starter-site-branding">
                 <h1 class="kecom-starter-site-title">
                     <a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
-                        <?php bloginfo('name'); ?>
+                        <?php if (!empty($brand_logo)) : ?>
+                        <img src="<?php echo esc_url($brand_logo); ?>" alt="<?php echo esc_attr($brand_name); ?>">
+                        <?php endif; ?>
+                        <span><?php echo esc_html($brand_name); ?></span>
                     </a>
                 </h1>
             </div>
@@ -50,13 +56,13 @@ use Kirki\Ecommerce\App\Supports\Url;
                 <?php if (shortcode_exists('kecom_mini_cart')) : ?>
                     <span class="kecom-starter-nav-cart-divider">|</span>
                     <div class="kecom-starter-nav-extra">
-                        <?php
-                        if (class_exists('\Kirki\Ecommerce\App\Supports\Icon')) :
-                            $account_url = Url::get_account_url();
-                            ?>
+                        <?php if (isset($theme_data['account_url'])) : ?>
                         <div>
-                            <a href="<?php echo esc_url($account_url); ?>">
-                                <?php \Kirki\Ecommerce\App\Supports\Icon::render('user', ['size' => 20]); ?>
+                            <a href="<?php echo esc_url($theme_data['account_url']); ?>">
+                                <?php isset($theme_data['render_account_icon']) && is_callable($theme_data['render_account_icon'])
+                                        ? call_user_func($theme_data['render_account_icon'])
+                                        : __('My Account', 'kirki-ecommerce-starter');
+                                ?>
                             </a>
                         </div>
                         <?php endif; ?>

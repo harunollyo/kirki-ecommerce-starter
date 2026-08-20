@@ -56,5 +56,6 @@ class Theme
     {
         Setup::get_instance();
         Scripts::get_instance();
+        Filters::get_instance();
     }
 }
