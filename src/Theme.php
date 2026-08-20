@@ -12,6 +12,8 @@ namespace Kirki\Ecommerce\Theme\Starter;
 
 defined('ABSPATH') || exit;
 
+use Kirki\Ecommerce\Theme\Starter\Core\Singletone;
+
 /**
  * Class Theme
  *
@@ -19,32 +21,12 @@ defined('ABSPATH') || exit;
  *
  * @since 1.0.0
  */
-class Theme
+class Theme extends Singletone
 {
-    /**
-     * The single instance of the class.
-     *
-     * @var Theme|null
-     */
-    private static $instance = null;
-
-    /**
-     * Get class instance.
-     *
-     * @return Theme
-     */
-    public static function get_instance()
-    {
-        if (null === self::$instance) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
     /**
      * Constructor.
      */
-    private function __construct()
+    protected function __construct()
     {
         $this->init();
     }

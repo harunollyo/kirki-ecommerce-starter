@@ -16,39 +16,19 @@ defined('ABSPATH') || exit;
 use Kirki\Ecommerce\App\Supports\Facades\Settings;
 use Kirki\Ecommerce\App\Supports\Icon;
 use Kirki\Ecommerce\App\Supports\Url;
+use Kirki\Ecommerce\Theme\Starter\Core\Singletone;
 
 /**
  * Class Filters
  *
  * @since 1.0.0
  */
-class Filters
+class Filters extends Singletone
 {
-    /**
-     * The single instance of the class.
-     *
-     * @var Scripts|null
-     */
-    private static $instance = null;
-
-    /**
-     * Get class instance.
-     *
-     * @return Scripts
-     */
-    public static function get_instance()
-    {
-        if (null === self::$instance) {
-            self::$instance = new self();
-        }
-        return self::$instance;
-    }
-
-
     /**
      * Constructor.
      */
-    private function __construct()
+    protected function __construct()
     {
         add_filter('kirki_ecommerce_starter_data', array($this, 'filter_starter_data'));
     }
