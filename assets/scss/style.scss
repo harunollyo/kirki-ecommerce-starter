@@ -2,8 +2,9 @@
 $container-max-width: 1312px;
 $font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $text-color: #2c3e50;
-$link-color: #3498db;
-$link-hover-color: #2980b9;
+$link-color: #2c3e50;
+$link-hover-color: #1f2c39;
+$current-link-color: #d60000;
 $border-color: #e2e8f0;
 $header-bg: #ffffff;
 $footer-bg: #f8fafc;
@@ -117,6 +118,10 @@ a {
               color: $link-color;
             }
           }
+        }
+
+        li.current_page_item a{
+            color: $current-link-color;
         }
       }
     }
